@@ -1,0 +1,27 @@
+#Python cache files
+__pycache__/
+
+# Configuration file
+config.yaml
+
+# Cluster images
+clusters/
+
+# Data directory (large files)
+data/
+
+# Output directory
+outputs/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Jupyter Notebook metadata
+*.ipynb~ 
+
+# Jupyter Notebook output files (optional, if you don't want to track outputs)
+*.out
+*.log
+
+# MacOS system files
+.DS_Store
