@@ -7,11 +7,15 @@ config.yaml
 # Cluster images
 clusters/
 
-# Data directory (large files)
-data/
+# Data directory
+data/hdbscan_cache
+data/hdbscan_memory
+
+# Website Visualization 
+website.py
 
 # Output directory
-outputs/
+outputs/cache/
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/

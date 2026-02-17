@@ -1,6 +1,9 @@
 import json
-import math
 import numpy as np
+import pickle as pkl
+import pandas as pd
+import utils
+from pathlib import Path
 
 def normalize_embeddings(embeddings, min_val=-10, max_val=10):
 
@@ -39,3 +42,39 @@ def build_embeddings_scattergl_demo(umap, labels, labels_df):
         data["quantity"].append(f"{row.quantity}")
 
     return data
+
+base_dir = Path(__file__).resolve().parent
+path_to_save = base_dir / "outputs" / "cache"
+
+# HDBSCAN model path
+hdbscan_path = 'hdbscan_l2norm_90pca_6components_100nn_0dist_cosine_42randseed_100_minclustsize_22minsamples.pkl'
+
+with open(path_to_save / hdbscan_path, 'rb') as file:
+    hdbscan_model = pkl.load(file)
+
+hdbscan_model.labels_ = utils.relabel_by_size(hdbscan_model.labels_)
+
+# UMAP embeddings path
+umap_2d_150_path = "umap_embeddings_2d_150nn.pkl"
+
+with open(path_to_save / umap_2d_150_path, "rb") as file:
+    umap_2d_150 = pkl.load(file)
+
+# Labels
+labels_path = base_dir / "data" / "cluster_labels.xlsx"
+labels_df = pd.read_excel(labels_path, sheet_name='Sheet1')
+
+labels_df['cluster'] = pd.to_numeric(labels_df['cluster'], errors='coerce').round().astype('Int64')
+labels_df = labels_df.dropna(subset=['cluster']).copy()
+labels_df['cluster'] = labels_df['cluster'].astype(int)
+labels_df['category'] = labels_df['category'].astype(str).str.strip().str.lower()
+
+data = build_embeddings_scattergl_demo(
+    umap=umap_2d_150,
+    labels=hdbscan_model.labels_,
+    labels_df=labels_df,
+)
+
+with open("dm_data.json", "w") as file:
+    json.dump(data, file)
+print("Data saved to dm_data.json")
