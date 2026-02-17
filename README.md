@@ -7,7 +7,7 @@ Paper title: "A Large-Scale Computer-Vision Mapping of the Geometric Structures 
 ## Pipeline
 1. Dataset and preprocessing
 2. DINOv2 embedding
-3. Clustering and visualization
+3. Clustering and Analysis
 
 ## Dataset and Preprocessing
 [data/image_preprocessing_labels.xlsx](data/image_preprocessing_labels.xlsx) includes per-image exclusion labels (duplicates, corrupted files, non-drawings). [notebooks/image_preprocessing.ipynb](notebooks/image_preprocessing.ipynb) filters and preprocesses images into a clean directory.
