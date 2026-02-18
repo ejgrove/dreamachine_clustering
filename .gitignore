@@ -17,6 +17,10 @@ website.py
 # Output directory
 outputs/cache/
 
+# Drawing dataset
+dremachine_drawings_preprocessed.zip
+dreamachine_drawings_preprocessed/
+
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 

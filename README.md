@@ -10,7 +10,7 @@ Pipeline for the unsupervised clustering analysis of drawings post induction of 
 ## Dataset and Preprocessing
 - [data/image_preprocessing_labels.xlsx](data/image_preprocessing_labels.xlsx): Contains per-image exclusion labels (duplicates, corrupted files, non-drawings) and location data
 - [notebooks/image_preprocessing.ipynb](notebooks/image_preprocessing.ipynb): Filters and preprocesses drawings.
-- `dreamachine_drawings_preprocessed`: Preprocessed drawing dataset. Available in `release assets`. 
+- The Dreamachine drawing dataset has no yet been made publicly available. 
 
 ## DINOv2 Embedding
 - [notebooks/DINOv2_embedding.ipynb](notebooks/DINOv2_embedding.ipynb): Generates embeddings from preprocessed drawings.
@@ -27,12 +27,10 @@ Pipeline for the unsupervised clustering analysis of drawings post induction of 
    conda env create -f requirements/environment.yml
    conda activate dreamachine_clustering
    ```
-
-2. Download `dreamachine_drawings_preprocessed` from `release assets`.
    
-3. Configure paths in each notebook:
+2. Configure paths in each notebook:
    - Edit `base_dir` to point to this repository
-   - Edit `image_dir` to point to preprocessed images directory
+   - Edit `image_dir` to point to preprocessed images directory `dreamachine_drawings_preprocessed/`
    - *The attendance data for the Dreamachine (`attendance_path`) is not publicly available.*
 
 ## Expected Outputs
